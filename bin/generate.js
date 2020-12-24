@@ -5,8 +5,8 @@ const path = require('path');
 const https = require('https');
 const { exec } = require('child_process');
 
-// const packageJson = require('../package.json');
-exec(`echo "version 1.1.7"`)
+const packageJson = require('../package.json');
+exec(`echo "${packageJson.version}"`)
 
 exec(
 	`npx create-react-app ${process.argv[2]}`,
@@ -19,12 +19,14 @@ exec(
 			return;
 		}
 
+		console.log(initStdout)
+
 		exec(
 			`cd ${process.argv[2]} && npm i redux react-redux redux-thunk redux-devtools-extension styled-components react-router-dom`,
-			(initErr, initStdout, initStderr) => { 
+			(initErr, initStdout, initStderr) => {
 				if (initErr) {
 					console.error(
-						`Everything was fine, then it wasn't:
+						`install package failed:
 						${initErr}`
 					);
 					return;
@@ -33,11 +35,11 @@ exec(
 				console.log(initStdout)
 
 				exec(
-					`cd ${process.argv[2]} && rm -r src`,
+					`rm -r src`,
 					(initErr, initStdout, initStderr) => { 
 						if (initErr) {
 							console.error(
-								`Everything was fine, then it wasn't:
+								`rm src failed:
 								${initErr}`
 							);
 							return;
@@ -61,7 +63,8 @@ exec(
 						// )
 
 						exec(
-							`cd ${process.argv[2]} && rm README.md`,
+							// `cd ${process.argv[2]} && rm README.md`,
+							`rm README.md`,
 							(initErr, initStdout, initStderr) => { 
 								if (initErr) {
 									console.error(
