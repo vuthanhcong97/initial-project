@@ -6,6 +6,7 @@ const https = require('https');
 const { exec } = require('child_process');
 
 // const packageJson = require('../package.json');
+exec(`echo "version 1.1.7"`)
 
 exec(
 	`npx create-react-app ${process.argv[2]}`,
