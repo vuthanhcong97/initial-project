@@ -35,7 +35,7 @@ exec(
 				console.log(initStdout)
 
 				exec(
-					`rm -r src`,
+					`cd ${process.argv[2]} && rm -r src`,
 					(initErr, initStdout, initStderr) => { 
 						if (initErr) {
 							console.error(
@@ -64,7 +64,7 @@ exec(
 
 						exec(
 							// `cd ${process.argv[2]} && rm README.md`,
-							`rm README.md`,
+							`cd ${process.argv[2]} && rm README.md`,
 							(initErr, initStdout, initStderr) => { 
 								if (initErr) {
 									console.error(
@@ -75,23 +75,23 @@ exec(
 								}
 
 								console.log(initStdout)
+								const filesToCopy = ['README.md', '.gitignore'];
+								for (let i = 0; i < filesToCopy.length; i += 1) {
+									fs
+										.createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
+										.pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
+								}
+		
+								fs
+									.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
+									.then(() =>
+										console.log(`All done!\nYour project is now started into ${
+										process.argv[2]
+										} folder, refer to the README for the project structure.\nHappy Coding!`))
+									.catch(err => console.error(err));
 							}
 						)
 
-						const filesToCopy = ['README.md', '.gitignore'];
-						for (let i = 0; i < filesToCopy.length; i += 1) {
-							fs
-								.createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
-								.pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
-						}
-
-						fs
-							.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
-							.then(() =>
-								console.log(`All done!\nYour project is now started into ${
-								process.argv[2]
-								} folder, refer to the README for the project structure.\nHappy Coding!`))
-							.catch(err => console.error(err));
 					}
 				)
 			}
