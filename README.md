@@ -14,7 +14,7 @@
 ##  fonts
 -   contain font files
 ##  images
--   contain image follow structure <folder image name> -> index.js + <image name>.<format>
+-   contain image follow structure `<folder image name>` -> `index.js` + `<image name>.<format>`
 #   components
 -   contain component share between pages
 #   pages
