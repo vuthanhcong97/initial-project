@@ -29,6 +29,8 @@ exec(
 					return;
 				}
 
+				console.log(initStdout)
+
 				exec(
 					`cd ${process.argv[2]} && rm -r src`,
 					(initErr, initStdout, initStderr) => { 
@@ -40,8 +42,10 @@ exec(
 							return;
 						}
 
+						console.log(initStdout)
+
 						exec(
-							`rm .gitignore`,
+							`cd ${process.argv[2]} && rm .gitignore`,
 							(initErr, initStdout, initStderr) => { 
 								if (initErr) {
 									console.error(
@@ -50,11 +54,13 @@ exec(
 									);
 									return;
 								}
+
+								console.log(initStdout)
 							}
 						)
 
 						exec(
-							`rm README.md`,
+							`cd ${process.argv[2]} && rm README.md`,
 							(initErr, initStdout, initStderr) => { 
 								if (initErr) {
 									console.error(
@@ -63,6 +69,8 @@ exec(
 									);
 									return;
 								}
+
+								console.log(initStdout)
 							}
 						)
 
