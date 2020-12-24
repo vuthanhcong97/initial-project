@@ -44,20 +44,20 @@ exec(
 
 						console.log(initStdout)
 
-						exec(
-							`cd ${process.argv[2]} && rm .gitignore`,
-							(initErr, initStdout, initStderr) => { 
-								if (initErr) {
-									console.error(
-										`cannot remove .gitignore:
-										${initErr}`
-									);
-									return;
-								}
+						// exec(
+						// 	`cd ${process.argv[2]} && rm .gitignore`,
+						// 	(initErr, initStdout, initStderr) => { 
+						// 		if (initErr) {
+						// 			console.error(
+						// 				`cannot remove .gitignore:
+						// 				${initErr}`
+						// 			);
+						// 			return;
+						// 		}
 
-								console.log(initStdout)
-							}
-						)
+						// 		console.log(initStdout)
+						// 	}
+						// )
 
 						exec(
 							`cd ${process.argv[2]} && rm README.md`,
