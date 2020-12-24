@@ -47,23 +47,22 @@ exec(
 
 						console.log(initStdout)
 
-						// exec(
-						// 	`cd ${process.argv[2]} && rm .gitignore`,
-						// 	(initErr, initStdout, initStderr) => { 
-						// 		if (initErr) {
-						// 			console.error(
-						// 				`cannot remove .gitignore:
-						// 				${initErr}`
-						// 			);
-						// 			return;
-						// 		}
+						exec(
+							`cd ${process.argv[2]} && rm .gitignore`,
+							(initErr, initStdout, initStderr) => { 
+								if (initErr) {
+									console.error(
+										`cannot remove .gitignore:
+										${initErr}`
+									);
+									return;
+								}
 
-						// 		console.log(initStdout)
-						// 	}
-						// )
+								console.log(initStdout)
+							}
+						)
 
 						exec(
-							// `cd ${process.argv[2]} && rm README.md`,
 							`cd ${process.argv[2]} && rm README.md`,
 							(initErr, initStdout, initStderr) => { 
 								if (initErr) {
@@ -75,12 +74,28 @@ exec(
 								}
 
 								console.log(initStdout)
-								const filesToCopy = ['README.md', '.gitignore'];
+								const filesToCopy = ['README.md'];
 								for (let i = 0; i < filesToCopy.length; i += 1) {
 									fs
 										.createReadStream(path.join(__dirname, `../${filesToCopy[i]}`))
 										.pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
 								}
+
+								https.get(
+									'https://raw.githubusercontent.com/vuthanhcong97/initial-project/master/.gitignore',
+									(res) => {
+										res.setEncoding('utf8');
+										let body = '';
+										res.on('data', (data) => {
+											body += data;
+										});
+										res.on('end', () => {
+											fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
+											if (err) throw err;
+											});
+										});
+									},
+								);
 		
 								fs
 									.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
