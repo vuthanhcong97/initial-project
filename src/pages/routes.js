@@ -6,7 +6,14 @@ const routes = [
 		exact: true,
 		public: true,
 		component: lazy(() => import('./Home'))
-	}
+	},
+	{
+		path: '/contact',
+		exact: true,
+		public: true,
+		component: lazy(() => import('./Contact'))
+	},
+
 ]
 
 process.env.NODE_ENV === 'development' && routes.push({
