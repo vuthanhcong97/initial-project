@@ -81,6 +81,9 @@ exec(
 										.pipe(fs.createWriteStream(`${process.argv[2]}/${filesToCopy[i]}`));
 								}
 
+
+								// npm will remove the .gitignore file when the package is installed, therefore it cannot be copied
+								// locally and needs to be downloaded.
 								https.get(
 									'https://raw.githubusercontent.com/vuthanhcong97/initial-project/master/.gitignore',
 									(res) => {
@@ -91,19 +94,25 @@ exec(
 										});
 										res.on('end', () => {
 											fs.writeFile(`${process.argv[2]}/.gitignore`, body, { encoding: 'utf-8' }, (err) => {
-											if (err) throw err;
+												if (err) throw err;
 											});
+											fs
+												.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
+												.then(() => {
+													exec(
+														`cd ${process.argv[2]} && git add . && git commit -m "initial project"`,
+														(err, stdout, stderr) => {
+															console.log(`All done!\nYour project is now started into ${
+															process.argv[2]
+															} folder, refer to the README for the project structure.\nHappy Coding!`)
+														}
+													)
+												})
+												.catch(err => console.error(err));
 										});
 									},
 								);
 		
-								fs
-									.copy(path.join(__dirname, '../src'), `${process.argv[2]}/src`)
-									.then(() =>
-										console.log(`All done!\nYour project is now started into ${
-										process.argv[2]
-										} folder, refer to the README for the project structure.\nHappy Coding!`))
-									.catch(err => console.error(err));
 							}
 						)
 
