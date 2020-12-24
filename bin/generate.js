@@ -30,7 +30,7 @@ exec(
 				}
 
 				exec(
-					`cd ${process.argv[2]} && rm -r src && rm .gitignore && rm README.md`,
+					`cd ${process.argv[2]} && rm -r src`,
 					(initErr, initStdout, initStderr) => { 
 						if (initErr) {
 							console.error(
@@ -39,6 +39,33 @@ exec(
 							);
 							return;
 						}
+
+						exec(
+							`rm .gitignore`,
+							(initErr, initStdout, initStderr) => { 
+								if (initErr) {
+									console.error(
+										`cannot remove .gitignore:
+										${initErr}`
+									);
+									return;
+								}
+							}
+						)
+
+						exec(
+							`rm README.md`,
+							(initErr, initStdout, initStderr) => { 
+								if (initErr) {
+									console.error(
+										`cannot remove README.md:
+										${initErr}`
+									);
+									return;
+								}
+							}
+						)
+
 						const filesToCopy = ['README.md', '.gitignore'];
 						for (let i = 0; i < filesToCopy.length; i += 1) {
 							fs
