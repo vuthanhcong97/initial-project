@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom'
+import reportWebVitals from './reportWebVitals';
+
+// components
+import App from './App';
+
+// redux
+import store from './redux'
 import { Provider } from 'react-redux';
 
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import store from './redux'
+// styles
+import { GlobalStyles } from './GlobalStyles';
 
 
 
@@ -14,6 +19,7 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router>
 			<React.StrictMode>
+				<GlobalStyles />
 				<App />
 			</React.StrictMode>
 		</Router>
