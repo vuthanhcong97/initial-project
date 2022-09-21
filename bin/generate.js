@@ -22,7 +22,7 @@ exec(
 		console.log(initStdout)
 
 		exec(
-			`cd ${process.argv[2]} && npm i redux react-redux redux-thunk redux-devtools-extension styled-components react-router-dom`,
+			`cd ${process.argv[2]} && npm i redux react-redux redux-thunk styled-components react-router-dom@^5.0.0 && npm i -D @redux-devtools/core @redux-devtools/dock-monitor @redux-devtools/log-monitor`,
 			(initErr, initStdout, initStderr) => {
 				if (initErr) {
 					console.error(
