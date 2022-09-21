@@ -5,11 +5,32 @@ const path = require('path');
 const https = require('https');
 const { exec } = require('child_process');
 
+const dependencies = {
+	"redux": "^4.2.0",
+	"react-redux": "^8.0.2",
+	"react-router-dom": "^6.4.0",
+	"redux-thunk": "^2.4.1",
+	"styled-components": "^5.3.5",
+}
+const listAddDependencies = Object.entries(dependencies)
+	.map(([key, value]) => `${key}@${value}`)
+	.join(" ")
+
+const devDependencies = {
+	"@redux-devtools/core": "^3.13.1",
+	"@redux-devtools/dock-monitor": "^3.0.1",
+	"@redux-devtools/log-monitor": "^4.0.1"
+}
+
+const listAddDevDependencies = Object.entries(devDependencies)
+	.map(([key, value]) => `${key}@${value}`)
+	.join(" ")
+
 const packageJson = require('../package.json');
 exec(`echo "${packageJson.version}"`)
 
 exec(
-	`npx create-react-app ${process.argv[2]}`,
+	`npx create-react-app@^5.0.1 ${process.argv[2]}`,
 	(initErr, initStdout, initStderr) => {
 		if (initErr) {
 			console.error(
@@ -22,7 +43,7 @@ exec(
 		console.log(initStdout)
 
 		exec(
-			`cd ${process.argv[2]} && npm i redux react-redux redux-thunk styled-components react-router-dom@^5.0.0 && npm i -D @redux-devtools/core @redux-devtools/dock-monitor @redux-devtools/log-monitor`,
+			`cd ${process.argv[2]} && npm i ${listAddDependencies} && npm i -D ${listAddDevDependencies}`,
 			(initErr, initStdout, initStderr) => {
 				if (initErr) {
 					console.error(
