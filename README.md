@@ -72,12 +72,16 @@
 |	|	|	+--index.js
 |	|	|	+--types.js
 |	|	+--...
+|	|	+--index.dev.js //store when NODE_ENV is development
 |	|	+--index.js //store
+|	|	+--index.prod.js //store when NODE_ENV is production
 |	|	+--reducer.js
 |	+--App.js
 |	+--index.css
-|	+--index.js
-|	+--reportWebVitals.js
+|	+--index.dev.js // entry point when NODE_ENV is development
+|	+--index.js // entry point
+|	+--index.dev.js
+|	+--reportWebVitals.js  // entry when NODE_ENV is production
 |	+--setupTests.js
 +--.gitignore
 +--package.json
