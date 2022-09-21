@@ -80,8 +80,8 @@
 |	+--index.css
 |	+--index.dev.js // entry point when NODE_ENV is development
 |	+--index.js // entry point
-|	+--index.dev.js
-|	+--reportWebVitals.js  // entry when NODE_ENV is production
+|	+--index.dev.js  // entry when NODE_ENV is production
+|	+--reportWebVitals.js 
 |	+--setupTests.js
 +--.gitignore
 +--package.json
