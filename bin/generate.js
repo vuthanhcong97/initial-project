@@ -20,6 +20,8 @@ const devDependencies = {
 	"@redux-devtools/core": "^3.13.1",
 	"@redux-devtools/dock-monitor": "^3.0.1",
 	"@redux-devtools/log-monitor": "^4.0.1",
+	husky: "^8.0.1",
+	prettier: "2.7.1",
 }
 
 const listAddDevDependencies = Object.entries(devDependencies)
@@ -54,6 +56,32 @@ exec(
 				}
 
 				console.log(initStdout)
+
+				exec(
+					`npm set-script prettier "prettier --write ."`,
+					(initErr, initStdout, initStderr) => {
+						if (initErr) {
+							console.error(
+								`cannot set script prettier:
+								${initErr}`
+							)
+							return
+						}
+					}
+				)
+
+				exec(
+					`npx mrm@2 lint-staged`,
+					(initErr, initStdout, initStderr) => {
+						if (initErr) {
+							console.error(
+								`cannot setup pre-commit:
+								${initErr}`
+							)
+							return
+						}
+					}
+				)
 
 				exec(
 					`cd ${process.argv[2]} && rm -r src`,
