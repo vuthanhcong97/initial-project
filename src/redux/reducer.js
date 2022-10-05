@@ -1,11 +1,8 @@
-import { combineReducers } from "redux"
+import count from "./countSlice"
 
-import config from "./config"
-
-const reducer = (asyncReducer) =>
-	combineReducers({
-		config,
-		...asyncReducer,
-	})
+const reducer = (asyncReducer) => ({
+	count,
+	...asyncReducer,
+})
 
 export default reducer

@@ -11,7 +11,6 @@ const dependencies = {
 	"@reduxjs/toolkit": packageJson.dependencies["@reduxjs/toolkit"],
 	"react-redux": packageJson.dependencies["react-redux"],
 	"react-router-dom": packageJson.dependencies["react-router-dom"],
-	"redux-thunk": packageJson.dependencies["redux-thunk"],
 	"styled-components": packageJson.dependencies["styled-components"],
 }
 const listAddDependencies = Object.entries(dependencies)
