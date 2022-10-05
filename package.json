@@ -1,6 +1,6 @@
 {
 	"name": "initial-project",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.8.5",
 		"@testing-library/jest-dom": "^5.16.5",

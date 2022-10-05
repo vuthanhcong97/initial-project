@@ -1,6 +1,6 @@
 # Install
 
--   setup project by create-react-app and install redux, redux-thunk, react-router, styled-component with some configs
+-   setup project by create-react-app and react router v6, redux toolkit, prettier and config pretty code pre-commit
 
 ## Use global
 
@@ -38,6 +38,7 @@
 # tree structure
 
 ```
++--.husky // config pre-commit
 +--node_modules
 +--public
 +--src
@@ -100,6 +101,8 @@
 |	+--reportWebVitals.js
 |	+--setupTests.js
 +--.gitignore
++--.prettierignore
++--.prettierrc // config prettier
 +--package.json
 +--package-lock.json
 +--README.md
