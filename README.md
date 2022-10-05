@@ -83,21 +83,13 @@
 |	|	+--...
 |	|	+--routes.js
 |	+--redux
-|	|	+--reducer1
-|	|	|	+--action.js
-|	|	|	+--reducer1.js
-|	|	|	+--index.js
-|	|	|	+--types.js
+|	|	+--countSlice.js // create slide follow redux toolkit
 |	|	+--...
-|	|	+--index.dev.js //store when NODE_ENV is development
 |	|	+--index.js //store
-|	|	+--index.prod.js //store when NODE_ENV is production
 |	|	+--reducer.js
 |	+--App.js
 |	+--index.css
-|	+--index.dev.js // entry point when NODE_ENV is development
 |	+--index.js // entry point
-|	+--index.dev.js  // entry when NODE_ENV is production
 |	+--reportWebVitals.js
 |	+--setupTests.js
 +--.gitignore
