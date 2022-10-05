@@ -1,12 +1,14 @@
 import React from "react"
+import Count from "../../components/Count"
 import Footer from "../../components/Footer"
+import { WrapHome } from "./index.styles"
 
 const Home = () => {
 	return (
-		<div>
-			Home Page
+		<WrapHome className="page">
+			<Count />
 			<Footer />
-		</div>
+		</WrapHome>
 	)
 }
 

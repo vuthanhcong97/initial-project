@@ -1,7 +1,12 @@
 import React from "react"
+import { WrapFooter } from "./index.styles"
 
 const Footer = () => {
-	return <div>Footer</div>
+	return (
+		<WrapFooter>
+			This project was initial by @universuccess - vuthanhcong97@gmail.com
+		</WrapFooter>
+	)
 }
 
 export default Footer
