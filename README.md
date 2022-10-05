@@ -1,26 +1,42 @@
-#	Install
--	setup project by create-react-app and install redux, redux-thunk, react-router, styled-component with some configs
-##	Use global
--	`npm i -g initial-project`
--	`initial-project <project-name>`
-##	Use by npx
--	`npx initial-project <project-name>`
+# Install
 
--	HAPPY CODING!
+-   setup project by create-react-app and install redux, redux-thunk, react-router, styled-component with some configs
 
-#   apis
+## Use global
+
+-   `npm i -g initial-project`
+-   `initial-project <project-name>`
+
+## Use by npx
+
+-   `npx initial-project <project-name>`
+
+-   HAPPY CODING!
+
+# apis
+
 -   contain config, function request API
-#   assets
-##  fonts
+
+# assets
+
+## fonts
+
 -   contain font files
-##  images
+
+## images
+
 -   contain image follow structure `<folder image name>` -> `index.js` + `<image name>.<format>`
-#   components
+
+# components
+
 -   contain component share between pages
-#   pages
+
+# pages
+
 -   contain page in web
 
-#	tree structure
+# tree structure
+
 ```
 +--node_modules
 +--public
@@ -81,7 +97,7 @@
 |	+--index.dev.js // entry point when NODE_ENV is development
 |	+--index.js // entry point
 |	+--index.dev.js  // entry when NODE_ENV is production
-|	+--reportWebVitals.js 
+|	+--reportWebVitals.js
 |	+--setupTests.js
 +--.gitignore
 +--package.json

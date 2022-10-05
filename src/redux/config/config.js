@@ -1,7 +1,7 @@
-const config = (state={}, action) => {
-	switch(action.type) {
+const config = (state = {}, action) => {
+	switch (action.type) {
 		default:
-			return state;
+			return state
 	}
 }
 

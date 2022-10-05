@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components"
 
 const GlobalStyles = createGlobalStyle`
 	body {
@@ -14,8 +14,6 @@ const GlobalStyles = createGlobalStyle`
 		font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 	}
 
-`;
+`
 
-export {
-	GlobalStyles
-}
+export { GlobalStyles }

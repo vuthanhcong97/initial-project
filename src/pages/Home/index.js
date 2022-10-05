@@ -1,13 +1,13 @@
-import React from 'react'
-import Footer from '../../components/Footer'
+import React from "react"
+import Footer from "../../components/Footer"
 
 const Home = () => {
-    return (
-        <div>
-            Home Page
+	return (
+		<div>
+			Home Page
 			<Footer />
-        </div>
-    )
+		</div>
+	)
 }
 
 export default Home

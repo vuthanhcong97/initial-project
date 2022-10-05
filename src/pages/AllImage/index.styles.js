@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const WrapAllImage = styled.div`
 	display: flex;
@@ -16,9 +16,6 @@ const WrapAllImage = styled.div`
 			object-fit: contain;
 		}
 	}
+`
 
-`;
-
-export {
-	WrapAllImage
-}
+export { WrapAllImage }

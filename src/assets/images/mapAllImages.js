@@ -6,7 +6,7 @@ const context = require.context(".", true, /index.js$/)
 context.keys().forEach((path) => {
 	const image = {
 		path,
-		component: require(`${path}`).default
+		component: require(`${path}`).default,
 	}
 
 	images.push(image)
