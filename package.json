@@ -1,6 +1,6 @@
 {
 	"name": "initial-project",
-	"version": "2.0.2",
+	"version": "3.0.0",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.8.5",
 		"@testing-library/jest-dom": "^5.16.5",
@@ -50,9 +50,6 @@
 		]
 	},
 	"devDependencies": {
-		"@redux-devtools/core": "^3.13.1",
-		"@redux-devtools/dock-monitor": "^3.0.1",
-		"@redux-devtools/log-monitor": "^4.0.1",
 		"husky": "^8.0.1",
 		"prettier": "2.7.1"
 	},

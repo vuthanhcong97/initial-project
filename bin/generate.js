@@ -8,7 +8,7 @@ const packageJson = require("../package.json")
 exec(`echo "${packageJson.version}"`)
 
 const dependencies = {
-	redux: packageJson.dependencies.redux,
+	"@reduxjs/toolkit": packageJson.dependencies["@reduxjs/toolkit"],
 	"react-redux": packageJson.dependencies["react-redux"],
 	"react-router-dom": packageJson.dependencies["react-router-dom"],
 	"redux-thunk": packageJson.dependencies["redux-thunk"],
@@ -19,11 +19,6 @@ const listAddDependencies = Object.entries(dependencies)
 	.join(" ")
 
 const devDependencies = {
-	"@redux-devtools/core": packageJson.devDependencies["@redux-devtools/core"],
-	"@redux-devtools/dock-monitor":
-		packageJson.devDependencies["@redux-devtools/dock-monitor"],
-	"@redux-devtools/log-monitor":
-		packageJson.devDependencies["@redux-devtools/log-monitor"],
 	husky: packageJson.devDependencies.husky,
 	prettier: packageJson.devDependencies.prettier,
 }
@@ -31,7 +26,7 @@ const devDependencies = {
 const listAddDevDependencies = Object.entries(devDependencies)
 	.map(([key, value]) => `${key}@${value}`)
 	.join(" ")
-
+console.log("install project use create-react-app")
 exec(
 	`npx create-react-app@^5.0.1 ${process.argv[2]}`,
 	(initErr, initStdout, initStderr) => {
@@ -44,7 +39,12 @@ exec(
 		}
 
 		console.log(initStdout)
-
+		console.log("===============DONE===============")
+		console.log(
+			`install ${Object.keys(dependencies).join(" ")} and ${Object.keys(
+				devDependencies
+			).join(" ")}`
+		)
 		exec(
 			`cd ${process.argv[2]} && npm i ${listAddDependencies} && npm i -D ${listAddDevDependencies}`,
 			(initErr, initStdout, initStderr) => {
@@ -57,7 +57,9 @@ exec(
 				}
 
 				console.log(initStdout)
+				console.log("===============DONE===============")
 
+				console.log("add script prettier")
 				exec(
 					`cd ${process.argv[2]} && npm pkg set scripts.prettier="prettier --write ."`,
 					(initErr, initStdout, initStderr) => {
@@ -68,6 +70,9 @@ exec(
 							)
 							return
 						}
+						console.log("===============DONE===============")
+
+						console.log("install and setup pre-commit")
 						exec(
 							`cd ${process.argv[2]} && npx mrm@2 lint-staged`,
 							(initErr, initStdout, initStderr) => {
@@ -78,6 +83,10 @@ exec(
 									)
 									return
 								}
+								console.log(
+									"===============DONE==============="
+								)
+
 								exec(
 									`cd ${process.argv[2]} && rm -r src`,
 									(initErr, initStdout, initStderr) => {
