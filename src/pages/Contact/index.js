@@ -1,12 +1,13 @@
 import React from "react"
 import Footer from "../../components/Footer"
+import { WrapContact } from "./index.styles"
 
 const Contact = () => {
 	return (
-		<div>
-			Contact Page
+		<WrapContact className="page">
+			<div className="content">Contact Page</div>
 			<Footer />
-		</div>
+		</WrapContact>
 	)
 }
 

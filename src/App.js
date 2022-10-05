@@ -1,6 +1,7 @@
 import React, { Suspense } from "react"
-import { Routes, Route, Navigate, NavLink } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import { WrapApp } from "./App.styles"
+import MenuBar from "./components/MenuBar"
 
 // route
 import routes from "./pages/routes"
@@ -8,10 +9,7 @@ import routes from "./pages/routes"
 const App = () => {
 	return (
 		<WrapApp>
-			<div className="wrap-menu">
-				<NavLink to="/">Home Page</NavLink>
-				<NavLink to="/contact">Contact Page</NavLink>
-			</div>
+			<MenuBar />
 			<Routes>
 				{routes.map(({ component: Component, path, ...rest }) => {
 					return (
