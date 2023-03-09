@@ -8,6 +8,10 @@ const initialReducer = createReducer()
 const store = configureStore({
 	reducer: initialReducer,
 	preloadedState: initialState,
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: false,
+		}),
 })
 
 store.asyncReducers = {}
